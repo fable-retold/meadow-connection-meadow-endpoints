@@ -1,0 +1,42 @@
+{
+	"name": "meadow-connection-meadow-endpoints",
+	"version": "0.0.1",
+	"description": "Meadow connection that fronts a remote meadow-endpoints REST API as a meadow data source. Pairs with the in-meadow Meadow-Provider-MeadowEndpoints provider — this module supplies the connection-manager wrapper, form schema, and shared cookie/header state so consumers (retold-databeacon, retold-data-service, ...) can pick `Type: 'MeadowEndpoints'`.",
+	"main": "source/Meadow-Connection-MeadowEndpoints.js",
+	"scripts": {
+		"test": "npx mocha -u tdd -R spec --exit",
+		"tests": "npx mocha -u tdd --exit -R spec --grep",
+		"coverage": "npx nyc --reporter=lcov --reporter=text-lcov npx mocha -- -u tdd -R spec --exit"
+	},
+	"mocha": {
+		"diff": true,
+		"extension": [ "js" ],
+		"package": "./package.json",
+		"reporter": "spec",
+		"slow": "75",
+		"timeout": "5000",
+		"ui": "tdd",
+		"watch-files": [ "source/**/*.js", "test/**/*.js" ]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/stevenvelozo/meadow-connection-meadow-endpoints.git"
+	},
+	"keywords": [ "meadow", "meadow-endpoints", "rest", "connection" ],
+	"author": "Steven Velozo <steven@velozo.com> (http://velozo.com/)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/stevenvelozo/meadow-connection-meadow-endpoints/issues"
+	},
+	"homepage": "https://github.com/stevenvelozo/meadow-connection-meadow-endpoints",
+	"devDependencies": {
+		"chai": "^4.3.10",
+		"fable": "^3.1.70",
+		"mocha": "^10.2.0"
+	},
+	"dependencies": {
+		"fable-serviceproviderbase": "^3.0.19",
+		"meadow": "^2.0.37",
+		"simple-get": "^4.0.1"
+	}
+}
