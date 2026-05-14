@@ -1,6 +1,6 @@
 {
 	"name": "meadow-connection-meadow-endpoints",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Meadow connection that fronts a remote meadow-endpoints REST API as a meadow data source. Pairs with the in-meadow Meadow-Provider-MeadowEndpoints provider — this module supplies the connection-manager wrapper, form schema, and shared cookie/header state so consumers (retold-databeacon, retold-data-service, ...) can pick `Type: 'MeadowEndpoints'`.",
 	"main": "source/Meadow-Connection-MeadowEndpoints.js",
 	"scripts": {
@@ -31,12 +31,12 @@
 	"homepage": "https://github.com/stevenvelozo/meadow-connection-meadow-endpoints",
 	"devDependencies": {
 		"chai": "^4.3.10",
-		"fable": "^3.1.70",
+		"fable": "^3.1.72",
 		"mocha": "^10.2.0"
 	},
 	"dependencies": {
 		"fable-serviceproviderbase": "^3.0.19",
-		"meadow": "^2.0.37",
+		"meadow": "^2.0.39",
 		"simple-get": "^4.0.1"
 	}
 }
