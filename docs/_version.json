@@ -1,7 +1,7 @@
 {
 	"Name": "meadow-connection-meadow-endpoints",
-	"Version": "1.0.0",
+	"Version": "1.0.1",
 	"Description": "Meadow connection that fronts a remote meadow-endpoints REST API as a meadow data source. Pairs with the in-meadow Meadow-Provider-MeadowEndpoints provider — this module supplies the connection-manager wrapper, form schema, and shared cookie/header state so consumers (retold-databeacon, retold-data-service, ...) can pick `Type: 'MeadowEndpoints'`.",
-	"GeneratedAt": "2026-05-21T17:31:22.758Z",
-	"GitCommit": "91a3014"
+	"GeneratedAt": "2026-05-22T05:39:18.696Z",
+	"GitCommit": "2956127"
 }

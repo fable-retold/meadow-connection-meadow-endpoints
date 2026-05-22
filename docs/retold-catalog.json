@@ -1,24 +1,23 @@
 {
-	"Generated": "2026-05-21T17:31:22.610Z",
+	"Generated": "2026-05-22T05:39:18.552Z",
+	"Mode": "module",
 	"GitHubOrg": "stevenvelozo",
 	"DefaultBranch": "master",
-	"Groups": [
-		{
-			"Name": "Dist",
-			"Key": "dist",
-			"Description": "",
-			"Modules": [
-				{
-					"Name": "indoctrinate_content_staging",
-					"Repo": "indoctrinate_content_staging",
-					"Group": "dist",
-					"Branch": "master",
-					"HasDocs": false,
-					"HasCover": false,
-					"Sidebar": [],
-					"DocFiles": []
-				}
-			]
-		}
-	]
+	"Module": {
+		"Name": "meadow-connection-meadow-endpoints",
+		"Repo": "meadow-connection-meadow-endpoints",
+		"Group": "",
+		"Branch": "master",
+		"HasDocs": true,
+		"HasCover": false,
+		"Sidebar": [],
+		"DocFiles": [
+			".nojekyll",
+			"_version.json",
+			"index.html",
+			"retold-catalog.json",
+			"retold-keyword-index.json"
+		]
+	},
+	"Groups": []
 }
