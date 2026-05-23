@@ -1,5 +1,7 @@
 # meadow-connection-meadow-endpoints
 
+> **[&#9654; Read the Meadow-Connection-Meadow-Endpoints Documentation](https://stevenvelozo.github.io/meadow-connection-meadow-endpoints/)** &mdash; interactive docs with the full API reference.
+
 Meadow connection that fronts a remote
 [meadow-endpoints](https://github.com/stevenvelozo/meadow-endpoints) REST
 API as a meadow data source. Pairs with the in-meadow
