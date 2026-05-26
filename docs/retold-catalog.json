@@ -1,7 +1,7 @@
 {
-	"Generated": "2026-05-22T05:39:18.552Z",
+	"Generated": "2026-05-26T18:19:11.960Z",
 	"Mode": "module",
-	"GitHubOrg": "stevenvelozo",
+	"GitHubOrg": "fable-retold",
 	"DefaultBranch": "master",
 	"Module": {
 		"Name": "meadow-connection-meadow-endpoints",
@@ -9,10 +9,11 @@
 		"Group": "",
 		"Branch": "master",
 		"HasDocs": true,
-		"HasCover": false,
+		"HasCover": true,
 		"Sidebar": [],
 		"DocFiles": [
 			".nojekyll",
+			"_cover.md",
 			"_version.json",
 			"index.html",
 			"retold-catalog.json",
