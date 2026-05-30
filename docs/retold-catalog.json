@@ -1,5 +1,5 @@
 {
-	"Generated": "2026-05-26T21:12:27.763Z",
+	"Generated": "2026-05-30T22:31:48.906Z",
 	"Mode": "module",
 	"GitHubOrg": "fable-retold",
 	"DefaultBranch": "master",
@@ -10,12 +10,92 @@
 		"Branch": "master",
 		"HasDocs": true,
 		"HasCover": true,
-		"Sidebar": [],
+		"Sidebar": [
+			{
+				"Title": "Getting Started",
+				"Children": [
+					{
+						"Title": "Overview",
+						"Path": "README.md"
+					},
+					{
+						"Title": "Quickstart",
+						"Path": "quickstart.md"
+					}
+				]
+			},
+			{
+				"Title": "Architecture",
+				"Children": [
+					{
+						"Title": "Design & Data Flow",
+						"Path": "architecture.md"
+					}
+				]
+			},
+			{
+				"Title": "Configuration",
+				"Children": [
+					{
+						"Title": "Configuration & Authentication",
+						"Path": "configuration.md"
+					}
+				]
+			},
+			{
+				"Title": "API Reference",
+				"Children": [
+					{
+						"Title": "Full Reference",
+						"Path": "api.md"
+					}
+				]
+			},
+			{
+				"Title": "Retold Ecosystem",
+				"Children": [
+					{
+						"Title": "Meadow",
+						"Path": "https://fable-retold.github.io/meadow/README.md"
+					},
+					{
+						"Title": "Meadow Endpoints",
+						"Path": "https://fable-retold.github.io/meadow-endpoints/README.md"
+					},
+					{
+						"Title": "Meadow Connection Manager",
+						"Path": "https://fable-retold.github.io/meadow-connection-manager/README.md"
+					},
+					{
+						"Title": "Retold DataBeacon",
+						"Path": "https://fable-retold.github.io/retold-databeacon/README.md"
+					},
+					{
+						"Title": "Retold Facto",
+						"Path": "https://fable-retold.github.io/retold-facto/README.md"
+					},
+					{
+						"Title": "Meadow Connection MySQL",
+						"Path": "https://fable-retold.github.io/meadow-connection-mysql/README.md"
+					},
+					{
+						"Title": "Fable",
+						"Path": "https://fable-retold.github.io/fable/README.md"
+					}
+				]
+			}
+		],
 		"DocFiles": [
 			".nojekyll",
+			"README.md",
 			"_cover.md",
+			"_sidebar.md",
 			"_version.json",
+			"api.md",
+			"architecture.md",
+			"configuration.md",
 			"index.html",
+			"quickstart.md",
 			"retold-catalog.json",
 			"retold-keyword-index.json"
 		]
