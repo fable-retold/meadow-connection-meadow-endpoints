@@ -103,7 +103,7 @@ It is consumed by `meadow-connection-manager`'s `getProviderFormSchema('MeadowEn
 | Name | Label | Type | Default | Group |
 | --- | --- | --- | --- | --- |
 | `ServerProtocol` | Protocol | Select (`https`, `http`) | `https` | — |
-| `ServerAddress` | Host | String | `api.qa.headlight.com` | — |
+| `ServerAddress` | Host | String | `127.0.0.1` | — |
 | `ServerPort` | Port | Number (1–65535) | `443` | — |
 | `ServerEndpointPrefix` | Endpoint Prefix | String | `1.0/` | — |
 | `Authentication.UserName` | Username | String | — | Authentication |
@@ -115,7 +115,7 @@ It is consumed by `meadow-connection-manager`'s `getProviderFormSchema('MeadowEn
 | `Authentication.CookieName` | Session Cookie | String | `SessionID` | Authentication |
 | `Authentication.AutoConnect` | Auto-Connect | Boolean | `true` | Authentication |
 
-The four server fields are marked `Required`. The authentication fields share the `Authentication` group so a form can render them as a collapsible section. The schema's defaults (host `api.qa.headlight.com`, prefix `1.0/`) reflect the Headlight Platform API as the canonical target; note these differ from the connection class's bare network defaults (`127.0.0.1`).
+The four server fields are marked `Required`. The authentication fields share the `Authentication` group so a form can render them as a collapsible section. The schema's defaults match the connection class defaults (host `127.0.0.1`, protocol `https`, port `443`, prefix `1.0/`); override `ServerAddress` (and the rest) for a real deployment such as the Headlight Platform API.
 
 ---
 

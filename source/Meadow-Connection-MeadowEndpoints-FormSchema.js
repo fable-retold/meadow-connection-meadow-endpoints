@@ -20,7 +20,7 @@ module.exports =
 		Fields:
 		[
 			{ Name: 'ServerProtocol',       Label: 'Protocol',       Type: 'Select', Default: 'https', Required: true, Options: [ 'https', 'http' ] },
-			{ Name: 'ServerAddress',        Label: 'Host',           Type: 'String', Default: 'api.qa.headlight.com', Required: true, Placeholder: 'api.qa.headlight.com' },
+			{ Name: 'ServerAddress',        Label: 'Host',           Type: 'String', Default: '127.0.0.1', Required: true, Placeholder: '127.0.0.1' },
 			{ Name: 'ServerPort',           Label: 'Port',           Type: 'Number', Default: 443,    Required: true, Min: 1, Max: 65535 },
 			{ Name: 'ServerEndpointPrefix', Label: 'Endpoint Prefix',Type: 'String', Default: '1.0/', Required: true, Help: 'Path prefix appended after the host. Trailing slash recommended.' },
 
