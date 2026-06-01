@@ -47,8 +47,8 @@ When an `Authentication` object is present, the connection logs in at connect ti
 
 | Key | Type | Default | Notes |
 | --- | --- | --- | --- |
-| `Authentication.UserName` | string | — | Required for authenticated mode |
-| `Authentication.Password` | string | — | Required for authenticated mode |
+| `Authentication.UserName` | string | - | Required for authenticated mode |
+| `Authentication.Password` | string | - | Required for authenticated mode |
 | `Authentication.Endpoint` | string | `Authenticate` | Path under `ServerEndpointPrefix` |
 | `Authentication.Method` | string | `POST` | `POST` or `GET` (upper-cased) |
 | `Authentication.UserNameField` | string | `UserName` | Body field name carrying the user id |
@@ -102,12 +102,12 @@ It is consumed by `meadow-connection-manager`'s `getProviderFormSchema('MeadowEn
 
 | Name | Label | Type | Default | Group |
 | --- | --- | --- | --- | --- |
-| `ServerProtocol` | Protocol | Select (`https`, `http`) | `https` | — |
-| `ServerAddress` | Host | String | `127.0.0.1` | — |
-| `ServerPort` | Port | Number (1–65535) | `443` | — |
-| `ServerEndpointPrefix` | Endpoint Prefix | String | `1.0/` | — |
-| `Authentication.UserName` | Username | String | — | Authentication |
-| `Authentication.Password` | Password | Password | — | Authentication |
+| `ServerProtocol` | Protocol | Select (`https`, `http`) | `https` | - |
+| `ServerAddress` | Host | String | `127.0.0.1` | - |
+| `ServerPort` | Port | Number (1-65535) | `443` | - |
+| `ServerEndpointPrefix` | Endpoint Prefix | String | `1.0/` | - |
+| `Authentication.UserName` | Username | String | - | Authentication |
+| `Authentication.Password` | Password | Password | - | Authentication |
 | `Authentication.Endpoint` | Auth Endpoint | String | `Authenticate` | Authentication |
 | `Authentication.Method` | Auth Method | Select (`POST`, `GET`) | `POST` | Authentication |
 | `Authentication.UserNameField` | Username Field | String | `UserName` | Authentication |

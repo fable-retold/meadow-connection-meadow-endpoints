@@ -143,8 +143,8 @@ If neither yields a cookie, `connectAsync()` returns an error even though the HT
 
 `meadow-connection-manager` is the registry that maps a `Type` string to a connection module. The relevant entries for this module:
 
-- **Module map:** `'MeadowEndpoints'` &rarr; `'meadow-connection-meadow-endpoints'`
-- **Form schema path:** `'MeadowEndpoints'` &rarr; `'source/Meadow-Connection-MeadowEndpoints-FormSchema.js'`
+- **Module map:** `'MeadowEndpoints'` -> `'meadow-connection-meadow-endpoints'`
+- **Form schema path:** `'MeadowEndpoints'` -> `'source/Meadow-Connection-MeadowEndpoints-FormSchema.js'`
 
 ```mermaid
 sequenceDiagram

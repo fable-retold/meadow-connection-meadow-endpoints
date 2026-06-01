@@ -1,11 +1,11 @@
 # meadow-connection-meadow-endpoints
 
-> **[&#9654; Read the Meadow-Connection-Meadow-Endpoints Documentation](https://fable-retold.github.io/meadow-connection-meadow-endpoints/)** &mdash; interactive docs with the full API reference.
+> **[Read the Meadow-Connection-Meadow-Endpoints Documentation](https://fable-retold.github.io/meadow-connection-meadow-endpoints/)** - interactive docs with the full API reference.
 
 Meadow connection that fronts a remote
 [meadow-endpoints](https://github.com/fable-retold/meadow-endpoints) REST
 API as a meadow data source. Pairs with the in-meadow
-`Meadow-Provider-MeadowEndpoints` provider — this module supplies the
+`Meadow-Provider-MeadowEndpoints` provider - this module supplies the
 connection-manager-shaped wrapper, the form schema, and a shared
 cookie/header state so consumers (retold-databeacon, retold-data-service,
 retold-data-mapper, ...) can pick `Type: 'MeadowEndpoints'` and treat the
@@ -17,7 +17,7 @@ You have a process (a beacon, a CLI, a service) that already speaks meadow
 and you want it to read/write through someone else's meadow-endpoints API
 instead of a direct DB connection. The canonical case: a retold-databeacon
 fronting the Headlight Platform API, where the authenticated user's session
-naturally scopes data per customer — the beacon never has to handle
+naturally scopes data per customer - the beacon never has to handle
 `IDCustomer` itself.
 
 ## How it works
@@ -93,8 +93,8 @@ data and safe to `require()` even when `simple-get` / `meadow` are absent.
 | `ServerEndpointPrefix` | `1.0/` | Path prefix appended after the host (trailing slash auto-added) |
 | `Headers` | `{}` | Arbitrary outbound headers |
 | `Cookies` | `[]` | Pre-set outbound cookies (`name=value`) |
-| `Authentication.UserName` | — | Required for authenticated mode |
-| `Authentication.Password` | — | Required for authenticated mode |
+| `Authentication.UserName` | - | Required for authenticated mode |
+| `Authentication.Password` | - | Required for authenticated mode |
 | `Authentication.Endpoint` | `Authenticate` | Path under the prefix |
 | `Authentication.Method` | `POST` | `POST` or `GET` |
 | `Authentication.UserNameField` | `UserName` | Body field for the user id |
@@ -109,7 +109,7 @@ for the field-by-field reference and the form schema.
 
 Every meadow request issued by `Meadow-Provider-MeadowEndpoints` carries the
 captured session cookie. Headlight's API enforces customer scoping based on
-that session, so the beacon process never needs to know `IDCustomer` —
+that session, so the beacon process never needs to know `IDCustomer` -
 whatever the authenticated user can see is what the beacon serves. The
 upstream auth response (which typically includes fields like `CustomerID`
 and `UserID`) is exposed as `this.sessionInfo` for callers that want to read
@@ -134,17 +134,17 @@ methods exist for connection-manager shape parity with the SQL drivers.
 
 ## Related modules
 
-- [meadow](https://fable-retold.github.io/meadow/) — base ORM. Hosts
+- [meadow](https://fable-retold.github.io/meadow/) - base ORM. Hosts
   `Meadow-Provider-MeadowEndpoints`, the request builder this connection
   feeds.
-- [meadow-endpoints](https://fable-retold.github.io/meadow-endpoints/) — the
+- [meadow-endpoints](https://fable-retold.github.io/meadow-endpoints/) - the
   server-side framework that generates the REST API this connection talks
   to.
-- [meadow-connection-manager](https://fable-retold.github.io/meadow-connection-manager/) —
+- [meadow-connection-manager](https://fable-retold.github.io/meadow-connection-manager/) -
   registry that maps `Type: 'MeadowEndpoints'` to this module.
-- [retold-databeacon](https://fable-retold.github.io/retold-databeacon/) —
+- [retold-databeacon](https://fable-retold.github.io/retold-databeacon/) -
   the canonical consumer; points a beacon at a meadow-endpoints API.
-- [retold-facto](https://fable-retold.github.io/retold-facto/) — fixture /
+- [retold-facto](https://fable-retold.github.io/retold-facto/) - fixture /
   test-data tooling that can target the same connection types.
 
 ## License

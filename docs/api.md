@@ -106,8 +106,8 @@ Error and rejection cases:
 | Condition | Result |
 |-----------|--------|
 | Network/request error | `(pError, null)` |
-| HTTP status outside 200–299 | Error: `auth failed (status N)` |
-| Body `LoggedIn: false` | Error: `auth rejected — <reason>` (reason from body `Error`, else `rejected`) |
+| HTTP status outside 200-299 | Error: `auth failed (status N)` |
+| Body `LoggedIn: false` | Error: `auth rejected - <reason>` (reason from body `Error`, else `rejected`) |
 | Auth succeeded but no cookie captured | Error: no `<CookieName>` cookie returned, with `sessionInfo` passed through |
 | Success | `(null, sessionInfo)`, `connected = true`, cookie appended to `cookies` |
 
