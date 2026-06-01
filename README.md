@@ -134,15 +134,15 @@ methods exist for connection-manager shape parity with the SQL drivers.
 
 ## Related modules
 
-- [meadow](https://fable-retold.github.io/meadow/) - base ORM. Hosts
+- [meadow](https://github.com/fable-retold/meadow) - base ORM. Hosts
   `Meadow-Provider-MeadowEndpoints`, the request builder this connection
   feeds.
-- [meadow-endpoints](https://fable-retold.github.io/meadow-endpoints/) - the
+- [meadow-endpoints](https://github.com/fable-retold/meadow-endpoints) - the
   server-side framework that generates the REST API this connection talks
   to.
-- [meadow-connection-manager](https://fable-retold.github.io/meadow-connection-manager/) -
+- [meadow-connection-manager](https://github.com/fable-retold/meadow-connection-manager) -
   registry that maps `Type: 'MeadowEndpoints'` to this module.
-- [retold-databeacon](https://fable-retold.github.io/retold-databeacon/) -
+- [retold-databeacon](https://github.com/fable-retold/retold-databeacon) -
   the canonical consumer; points a beacon at a meadow-endpoints API.
 - [retold-facto](https://fable-retold.github.io/retold-facto/) - fixture /
   test-data tooling that can target the same connection types.
