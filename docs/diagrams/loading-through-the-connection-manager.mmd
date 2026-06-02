@@ -1,0 +1,15 @@
+sequenceDiagram
+	participant App as Application
+	participant MCM as MeadowConnectionManager
+	participant Conn as MeadowConnectionMeadowEndpoints
+	participant API as Remote API
+
+	App->>MCM: connect(name, { Type: 'MeadowEndpoints', ... })
+	MCM->>MCM: require('meadow-connection-meadow-endpoints')
+	MCM->>MCM: set fable.settings.MeadowEndpoints = config
+	MCM->>Conn: instantiate (without registration)
+	MCM->>Conn: connectAsync(callback)
+	Conn->>API: POST Authenticate
+	API-->>Conn: session
+	Conn-->>MCM: connected
+	MCM-->>App: connection entry stored

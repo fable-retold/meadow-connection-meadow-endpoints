@@ -1,0 +1,21 @@
+sequenceDiagram
+	participant Caller as Caller / Connection Manager
+	participant Conn as MeadowConnectionMeadowEndpoints
+	participant API as Remote meadow-endpoints API
+
+	Caller->>Conn: connectAsync(callback)
+	alt No Authentication block
+		Conn-->>Caller: connected = true, sessionInfo = null
+	else Authentication configured
+		Conn->>Conn: require UserName + Password
+		Conn->>API: POST /<prefix>/Authenticate { UserName, Password }
+		API-->>Conn: status + body + Set-Cookie
+		alt Non-2xx status
+			Conn-->>Caller: Error (auth failed, status N)
+		else Body LoggedIn: false
+			Conn-->>Caller: Error (auth rejected)
+		else Success
+			Conn->>Conn: capture session cookie
+			Conn-->>Caller: sessionInfo, connected = true
+		end
+	end

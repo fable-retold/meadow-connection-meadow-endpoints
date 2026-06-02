@@ -8,42 +8,8 @@ Meadow Connection Meadow Endpoints fronts a remote meadow-endpoints REST API as 
 
 The defining fact of this module: it does **not** make the meadow CRUD HTTP requests. That work lives in the meadow core provider `Meadow-Provider-MeadowEndpoints`. This module is the connection-manager-shaped wrapper that surrounds the provider with configuration, shared state, and authentication.
 
-```mermaid
-graph TB
-	subgraph Consumer["Consumer Process (beacon / CLI / service)"]
-		A[Application Code]
-		B[Meadow Entity]
-		C[FoxHound MeadowEndpoints dialect]
-	end
-
-	subgraph Provider["Meadow-Provider-MeadowEndpoints (in meadow core)"]
-		D[Create / Read / Update / Delete / Count]
-		E[simple-get HTTP request]
-	end
-
-	subgraph Connection["meadow-connection-meadow-endpoints (this module)"]
-		F[Config shape + normalization]
-		G[Shared Headers + Cookies]
-		H[Authenticate at connect]
-	end
-
-	subgraph Remote["Remote meadow-endpoints API"]
-		I[Headlight Platform API / any meadow-endpoints server]
-	end
-
-	A -->|doCreate / doRead / doUpdate / doDelete| B
-	B -->|setProvider MeadowEndpoints| C
-	C -->|path + verb| D
-	D --> E
-	E -->|reads fable.settings.MeadowEndpoints| G
-	H -->|harvested cookie| G
-	E -->|HTTP + session cookie| I
-	H -->|POST Authenticate| I
-
-	style Connection fill:#e8f4f8,stroke:#2E7D74,stroke-width:2px
-	style Consumer fill:#f5f0e8,stroke:#423D37,stroke-width:1px
-	style Remote fill:#fef3e2,stroke:#c97a2e,stroke-width:1px
-```
+<!-- bespoke diagram: edit diagrams/the-relay-split.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-meadow-endpoints/docs -->
+![The Relay Split](diagrams/the-relay-split.svg)
 
 The two halves communicate through `fable.settings.MeadowEndpoints`. This module writes its resolved config there (sharing the `Headers` and `Cookies` objects **by reference**), and the provider reads from there when it builds each request. Because the cookie array is shared, a session cookie captured after connect is immediately visible to the provider on its next request.
 
@@ -70,33 +36,8 @@ The request builder this connection feeds, living in the `meadow` package under 
 
 ### The Shared Settings Bag
 
-```mermaid
-graph LR
-	subgraph This["Connection (writes)"]
-		A1["this.settings"]
-		A2["this.headers"]
-		A3["this.cookies"]
-	end
-
-	subgraph Settings["fable.settings.MeadowEndpoints"]
-		B1["Server* keys"]
-		B2["Headers (shared ref)"]
-		B3["Cookies (shared ref)"]
-	end
-
-	subgraph Prov["Provider (reads)"]
-		C1["buildURL pieces"]
-		C2["request headers"]
-		C3["request cookie header"]
-	end
-
-	A1 --> B1 --> C1
-	A2 --> B2 --> C2
-	A3 --> B3 --> C3
-
-	style This fill:#e8f4f8,stroke:#2E7D74
-	style Prov fill:#f5f0e8,stroke:#423D37
-```
+<!-- bespoke diagram: edit diagrams/the-shared-settings-bag.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-meadow-endpoints/docs -->
+![The Shared Settings Bag](diagrams/the-shared-settings-bag.svg)
 
 ---
 
@@ -104,29 +45,8 @@ graph LR
 
 `connectAsync()` is the heart of the connect step. When an `Authentication` block is configured, it issues a single request to the auth endpoint and harvests the session cookie.
 
-```mermaid
-sequenceDiagram
-	participant Caller as Caller / Connection Manager
-	participant Conn as MeadowConnectionMeadowEndpoints
-	participant API as Remote meadow-endpoints API
-
-	Caller->>Conn: connectAsync(callback)
-	alt No Authentication block
-		Conn-->>Caller: connected = true, sessionInfo = null
-	else Authentication configured
-		Conn->>Conn: require UserName + Password
-		Conn->>API: POST /<prefix>/Authenticate { UserName, Password }
-		API-->>Conn: status + body + Set-Cookie
-		alt Non-2xx status
-			Conn-->>Caller: Error (auth failed, status N)
-		else Body LoggedIn: false
-			Conn-->>Caller: Error (auth rejected)
-		else Success
-			Conn->>Conn: capture session cookie
-			Conn-->>Caller: sessionInfo, connected = true
-		end
-	end
-```
+<!-- bespoke diagram: edit diagrams/authentication-flow.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-meadow-endpoints/docs -->
+![Authentication Flow](diagrams/authentication-flow.svg)
 
 ### Cookie Capture
 
@@ -146,23 +66,8 @@ If neither yields a cookie, `connectAsync()` returns an error even though the HT
 - **Module map:** `'MeadowEndpoints'` -> `'meadow-connection-meadow-endpoints'`
 - **Form schema path:** `'MeadowEndpoints'` -> `'source/Meadow-Connection-MeadowEndpoints-FormSchema.js'`
 
-```mermaid
-sequenceDiagram
-	participant App as Application
-	participant MCM as MeadowConnectionManager
-	participant Conn as MeadowConnectionMeadowEndpoints
-	participant API as Remote API
-
-	App->>MCM: connect(name, { Type: 'MeadowEndpoints', ... })
-	MCM->>MCM: require('meadow-connection-meadow-endpoints')
-	MCM->>MCM: set fable.settings.MeadowEndpoints = config
-	MCM->>Conn: instantiate (without registration)
-	MCM->>Conn: connectAsync(callback)
-	Conn->>API: POST Authenticate
-	API-->>Conn: session
-	Conn-->>MCM: connected
-	MCM-->>App: connection entry stored
-```
+<!-- bespoke diagram: edit diagrams/loading-through-the-connection-manager.mmd or .hints.json, then: npx pict-renderer-graph build modules/meadow/meadow-connection-meadow-endpoints/docs -->
+![Loading Through the Connection Manager](diagrams/loading-through-the-connection-manager.svg)
 
 When the manager runs `testConnection`, this type is treated as **already probed** -- the `Authenticate` call during connect is itself the connectivity check, so no extra round-trip probe is issued (unlike lazy-pool SQL drivers, which need a `SELECT 1`).
 
